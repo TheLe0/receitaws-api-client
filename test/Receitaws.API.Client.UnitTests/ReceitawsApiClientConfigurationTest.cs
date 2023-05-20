@@ -11,17 +11,17 @@ namespace Receitaws.API.Client.UnitTests
 
             Assert.NotEqual(string.Empty, configuration.BaseUrl);
             Assert.NotEqual(0, configuration.MaxTimeout);
+            Assert.Null(configuration.Token);
             Assert.True(configuration.ThrowOnAnyError);
         }
-
-        [InlineData("https://baconipsum.com/api/")]
-        [InlineData("https://localhost:3000/")]
-        [Theory]
-        public void ReceitawsApiClientConfiguration_WithCustomBaseUrl(string baseUrl)
+        
+        [Fact]
+        public void ReceitawsApiClientConfiguration_WithToken()
         {
-            var configuration = new ReceitawsApiClientConfiguration(baseUrl);
+            var token = Guid.NewGuid().ToString();
+            var configuration = new ReceitawsApiClientConfiguration(token);
 
-            Assert.Equal(baseUrl, configuration.BaseUrl);
+            Assert.Equal(token, configuration.Token);
             Assert.Equal(10000, configuration.MaxTimeout);
             Assert.True(configuration.ThrowOnAnyError);
         }
@@ -33,6 +33,7 @@ namespace Receitaws.API.Client.UnitTests
         {
             var configuration = new ReceitawsApiClientConfiguration
             {
+                Token = Guid.NewGuid().ToString(),
                 BaseUrl = baseUrl,
                 MaxTimeout = maxTimeOut,
                 ThrowOnAnyError = throwOnErrors

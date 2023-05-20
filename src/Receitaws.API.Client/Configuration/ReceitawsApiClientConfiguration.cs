@@ -1,21 +1,20 @@
-﻿using Receitaws.API.Client.Resources;
-
-namespace Receitaws.API.Client.Configuration
+﻿namespace Receitaws.API.Client.Configuration
 {
-    public class ReceitawsApiClientConfiguration : RestSharpConfiguration
+    public sealed class ReceitawsApiClientConfiguration : ApiConfiguration
     {
-        public ReceitawsApiClientConfiguration(string baseUrl)
+        public string Token { set; get; }
+    
+        public ReceitawsApiClientConfiguration(string token)
         {
-            BaseUrl = baseUrl;
+            Token = token;
 
-            SetupDefaultConfigs();
+            SetupApiDefaultConfigs();
         }
 
         public ReceitawsApiClientConfiguration()
         {
-            BaseUrl = Routes.BaseApiPath;
-
-            SetupDefaultConfigs();
+            Token = null;
+            SetupApiDefaultConfigs();
         }
     }
 }
