@@ -19,9 +19,9 @@ jobs:
         id: publish_nuget
         uses: alirezanet/publish-nuget@v3.0.4
         with:
-          PROJECT_FILE_PATH: src/Create.API.Client.DependencyInjection/Create.API.Client.DependencyInjection.csproj
-          PACKAGE_NAME: Create.API.Client.DependencyInjection
-          VERSION_FILE_PATH: src/Create.API.Client.DependencyInjection/Create.API.Client.DependencyInjection.csproj
+          PROJECT_FILE_PATH: src/Receitaws.API.Client.DependencyInjection/Receitaws.API.Client.DependencyInjection.csproj
+          PACKAGE_NAME: Receitaws.API.Client.DependencyInjection
+          VERSION_FILE_PATH: src/Receitaws.API.Client.DependencyInjection/Receitaws.API.Client.DependencyInjection.csproj
           VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
           TAG_COMMIT: true
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
