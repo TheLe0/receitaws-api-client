@@ -1,4 +1,4 @@
-name: "Deploy Create.API.Client"
+name: "Deploy Receitaws.API.Client"
 
 on:
   push:

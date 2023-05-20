@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "Create.API.Client.WebApi": {
+    "Receitaws.API.Client.WebApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
