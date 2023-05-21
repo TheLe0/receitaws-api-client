@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Receitaws.API.Client.Configuration;
 using RestSharp;
+using RestSharp.Authenticators;
 
 namespace Receitaws.API.Client.Infrastructure
 {
@@ -21,15 +22,20 @@ namespace Receitaws.API.Client.Infrastructure
             _client = new RestClient(GetConfigurations());
         }
 
-        public ReceitawsApiHttpClient(string baseUrl)
+        public ReceitawsApiHttpClient(string token)
         {
-            _configuration = new ReceitawsApiClientConfiguration(baseUrl);
+            _configuration = new ReceitawsApiClientConfiguration(token);
             _client = new RestClient(GetConfigurations());
         }
 
         public string GetBaseUrl()
         {
             return _configuration.BaseUrl;
+        }
+
+        public bool TokenIsNotNull()
+        {
+            return _configuration.Token != null;
         }
 
         public Task<T> GetAsync<T>(RestRequest request)
@@ -39,11 +45,19 @@ namespace Receitaws.API.Client.Infrastructure
 
         private RestClientOptions GetConfigurations()
         {
-            return new RestClientOptions(_configuration.BaseUrl)
+            var clientOptions =  new RestClientOptions(_configuration.BaseUrl)
             {
                 ThrowOnAnyError = _configuration.ThrowOnAnyError,
                 MaxTimeout = _configuration.MaxTimeout
+                
             };
+
+            if (!string.IsNullOrEmpty(_configuration.Token))
+            {
+                clientOptions.Authenticator = new JwtAuthenticator(_configuration.Token);
+            }
+
+            return clientOptions;
         }
     }
 }

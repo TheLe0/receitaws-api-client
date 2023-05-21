@@ -22,6 +22,7 @@
   <ItemGroup>
     <None Include="..\..\logo.png" Pack="true" Visible="false" PackagePath="images\logo.png" />
     <None Include="..\..\README.md" Pack="true" PackagePath="docs\README.md" />
+    <None Remove="Serialization\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,11 +36,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Configurations.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\Parameters.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Parameters.resx</DependentUpon>
-    </Compile>
     <Compile Update="Resources\Routes.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -47,6 +43,13 @@
     </Compile>
     <Compile Remove="Implementation\TextGenerator.cs" />
     <Compile Remove="Implementation\ITextGenerator.cs" />
+    <Compile Remove="Resources\Parameters.Designer.cs" />
+    <Compile Remove="Serialization\JsonResponse.cs" />
+    <Compile Remove="Serialization\**" />
+    <Compile Remove="Converters\CompanyParser.cs" />
+    <Compile Remove="Domain\BranchType.cs" />
+    <Compile Remove="Domain\Contact.cs" />
+    <Compile Remove="Domain\Address.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,14 +57,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Configurations.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Parameters.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Parameters.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Routes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Routes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Remove="Resources\Parameters.resx" />
+    <EmbeddedResource Remove="Serialization\**" />
   </ItemGroup>
 
 </Project>

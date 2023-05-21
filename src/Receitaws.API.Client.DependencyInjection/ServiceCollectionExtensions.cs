@@ -10,8 +10,8 @@ namespace Receitaws.API.Client.DependencyInjection
         {
             services.AddTransient<IReceitawsApiHttpClient, ReceitawsApiHttpClient>();
 
-            services.AddTransient<ICreateApiClient>(x =>
-                new CreateApiClient(x.GetRequiredService<IReceitawsApiHttpClient>()));
+            services.AddTransient<IReceitaws>(x =>
+                new Receitaws(x.GetRequiredService<IReceitawsApiHttpClient>()));
 
             return services;
         }
@@ -21,8 +21,8 @@ namespace Receitaws.API.Client.DependencyInjection
             services.AddTransient<IReceitawsApiHttpClient>(_ =>
                 new ReceitawsApiHttpClient(baseUrl));
 
-            services.AddTransient<ICreateApiClient>(x =>
-                new CreateApiClient(x.GetRequiredService<IReceitawsApiHttpClient>()));
+            services.AddTransient<IReceitaws>(x =>
+                new Receitaws(x.GetRequiredService<IReceitawsApiHttpClient>()));
 
             return services;
         }
@@ -32,8 +32,8 @@ namespace Receitaws.API.Client.DependencyInjection
             services.AddTransient<IReceitawsApiHttpClient>(_ =>
                 new ReceitawsApiHttpClient(configs));
 
-            services.AddTransient<ICreateApiClient>(x =>
-                new CreateApiClient(x.GetRequiredService<IReceitawsApiHttpClient>()));
+            services.AddTransient<IReceitaws>(x =>
+                new Receitaws(x.GetRequiredService<IReceitawsApiHttpClient>()));
 
             return services;
         }

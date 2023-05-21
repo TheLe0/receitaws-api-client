@@ -7,5 +7,6 @@ namespace Receitaws.API.Client.Infrastructure
     {
         Task<T> GetAsync<T>(RestRequest request);
         string GetBaseUrl();
+        bool TokenIsNotNull();
     }
 }
