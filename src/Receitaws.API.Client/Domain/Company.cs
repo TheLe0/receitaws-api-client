@@ -5,7 +5,7 @@ using Receitaws.API.Client.Converters;
 
 namespace Receitaws.API.Client.Domain;
 
-public class Company : BaseApiResponse
+public class Company
 {
     [JsonPropertyName("ultima_atualizacao")]
     public DateTime ModifiedAt { set; get; }
