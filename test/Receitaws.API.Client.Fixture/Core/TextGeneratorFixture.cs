@@ -1,6 +1,6 @@
 ﻿using Bogus;
 
-namespace Receitaws.API.Client.Fixture
+namespace Receitaws.API.Client.Fixture.Core
 {
     public static class TextGeneratorFixture
     {

@@ -9,4 +9,8 @@
     <PackageReference Include="Bogus" Version="34.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Receitaws.API.Client\Receitaws.API.Client.csproj" />
+  </ItemGroup>
+
 </Project>
