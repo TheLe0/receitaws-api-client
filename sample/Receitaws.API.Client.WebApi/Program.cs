@@ -1,17 +1,23 @@
-using Receitaws.API.Client;
+using Receitaws.API.Client.WebApi.Common;
+using Receitaws.API.Client.WebApi.Route;
+using Receitaws.API.Client.Configuration;
 using Receitaws.API.Client.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCreateApiClient();
+
+var receitawsConfig = builder.Configuration
+    .Parse<ReceitawsApiClientConfiguration>("Receitaws");
+
+builder.Services.AddReceitawsApiClient(receitawsConfig);
+
+//var token = builder.Configuration.GetValue<string>("Receitaws:Token");
+//builder.Services.AddReceitawsApiClient(token);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -19,5 +25,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.AddLegalEntityEndpoints();
+app.AddAccountEndpoints();
 
 app.Run();

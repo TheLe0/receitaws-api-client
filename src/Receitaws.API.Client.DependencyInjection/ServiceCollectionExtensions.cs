@@ -6,7 +6,7 @@ namespace Receitaws.API.Client.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddCreateApiClient(this IServiceCollection services)
+        public static IServiceCollection AddReceitawsApiClient(this IServiceCollection services)
         {
             services.AddTransient<IReceitawsApiHttpClient, ReceitawsApiHttpClient>();
 
@@ -16,10 +16,10 @@ namespace Receitaws.API.Client.DependencyInjection
             return services;
         }
 
-        public static IServiceCollection AddCreateApiClient(this IServiceCollection services, string baseUrl)
+        public static IServiceCollection AddReceitawsApiClient(this IServiceCollection services, string token)
         {
             services.AddTransient<IReceitawsApiHttpClient>(_ =>
-                new ReceitawsApiHttpClient(baseUrl));
+                new ReceitawsApiHttpClient(token));
 
             services.AddTransient<IReceitaws>(x =>
                 new Receitaws(x.GetRequiredService<IReceitawsApiHttpClient>()));
@@ -27,7 +27,7 @@ namespace Receitaws.API.Client.DependencyInjection
             return services;
         }
 
-        public static IServiceCollection AddCreateApiClient(this IServiceCollection services, ReceitawsApiClientConfiguration configs)
+        public static IServiceCollection AddReceitawsApiClient(this IServiceCollection services, ReceitawsApiClientConfiguration configs)
         {
             services.AddTransient<IReceitawsApiHttpClient>(_ =>
                 new ReceitawsApiHttpClient(configs));
