@@ -1,10 +1,16 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿var token = "";
+var cnpj = "";
 
-using Receitaws.API.Client;
+var client = new Receitaws.API.Client.Receitaws(token);
 
-var client = new Receitaws.API.Client.Receitaws();
-
-var company = await client.LegalEntity.FindByCnpj("09720710000160")
+var company = await client.LegalEntity.FindByCnpj(cnpj)
     .ConfigureAwait(false);
 
-Console.WriteLine("Hello, World!");
+company = await client.LegalEntity.FindByCnpj(cnpj, 15)
+    .ConfigureAwait(false);
+
+var accountProfile = await client.Account.GetAccountProfile()
+    .ConfigureAwait(false);
+
+var accountHistoricReport = await client.Account.GetAccountHistoricReport()
+    .ConfigureAwait(false);
