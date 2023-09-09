@@ -4,12 +4,12 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Version>1.0.0</Version>
     <Authors>Leonardo Tosin</Authors>
-    <PackageProjectUrl>https://github.com/TheLe0/create-api-client</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/TheLe0/bacen-dollar-api-client/assets/40045069/b14e8770-75d7-40d1-adc7-4a8dde1885c9</PackageIconUrl>
-    <PackageIcon>images\logo.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/TheLe0/receitaws-api-client</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/TheLe0/receitaws-api-client/assets/40045069/9e60c013-f03f-423c-95d9-550db69c2091</PackageIconUrl>
+	<PackageIcon>images\logo.png</PackageIcon>
     <PackageReadmeFile>docs\README.md</PackageReadmeFile>
-	  <PackageTags>API client</PackageTags>
-	  <Description>Replace this for your package description</Description>
+	  <PackageTags>API client CNPJ</PackageTags>
+	  <Description>API Client to find companies data by its CNPJ</Description>
 	  <Copyright>Copyright © Leonardo Tosin</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	  <AssemblyVersion>1.0.0</AssemblyVersion>
@@ -41,15 +41,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Routes.resx</DependentUpon>
     </Compile>
-    <Compile Remove="Implementation\TextGenerator.cs" />
-    <Compile Remove="Implementation\ITextGenerator.cs" />
-    <Compile Remove="Resources\Parameters.Designer.cs" />
-    <Compile Remove="Serialization\JsonResponse.cs" />
-    <Compile Remove="Serialization\**" />
-    <Compile Remove="Converters\CompanyParser.cs" />
-    <Compile Remove="Domain\BranchType.cs" />
-    <Compile Remove="Domain\Contact.cs" />
-    <Compile Remove="Domain\Address.cs" />
   </ItemGroup>
 
   <ItemGroup>
